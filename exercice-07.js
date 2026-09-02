@@ -31,4 +31,4 @@ const nomComplet = "amina el idrissi";
 console.log(genererSlug(titre));
 console.log(compterMots(phrase));
 console.log(initiales(nomComplet));
-console.log(genererSlug(" Sprint 1 "));
+console.log(genererSlug(" Sprint   1  "));
