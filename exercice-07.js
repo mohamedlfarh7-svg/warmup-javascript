@@ -1,3 +1,8 @@
+
+const titre = " Mon Premier Projet MERN ";
+const phrase = "Le JavaScript est la base du stack MERN";
+const nomComplet = "amina el idrissi";
+
 function genererSlug(titre) {
     return titre
         .trim()
@@ -24,9 +29,6 @@ function initiales(nomComplet) {
         .join(".") + ".";
 }
 
-const titre = " Mon Premier Projet MERN ";
-const phrase = "Le JavaScript est la base du stack MERN";
-const nomComplet = "amina el idrissi";
 
 console.log(genererSlug(titre));
 console.log(compterMots(phrase));
