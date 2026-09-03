@@ -34,12 +34,12 @@ function calculerCommande(montant, statut) {
     const totalAPayer = totalApresRemise + livraison;
 
     return {
-        montant: Number(montant.toFixed(2)),
+        montant:montant,
         pourcentageRemise,
-        remise: Number(remise.toFixed(2)),
-        totalApresRemise: Number(totalApresRemise.toFixed(2)),
-        livraison: Number(livraison.toFixed(2)),
-        totalAPayer: Number(totalAPayer.toFixed(2))
+        remise: remise,
+        totalApresRemise:totalApresRemise,
+        livraison: livraison,
+        totalAPayer: totalAPayer
     };
 }
 

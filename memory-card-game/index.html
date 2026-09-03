@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memory Card Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="game-container">
+    <header>
+      <h1>Memory Game</h1>
+      <div class="stats">
+        <p>Coups : <span id="moves-count">0</span></p>
+        <p>Paires : <span id="pairs-count">0</span>/6</p>
+      </div>
+      <button id="restart-btn">Recommencer</button>
+    </header>
+
+    <main id="game-board" class="memory-board"></main>
+
+    <div id="win-message" class="hidden">
+        Félicitations ! Vous avez gagné !
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
