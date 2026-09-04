@@ -44,6 +44,21 @@ function startTimer() {
   }, 1000);
 }
 
+function flipCard() {
+  if(lockBoard) return;
+  if(this===firstCard) return;
+  this.classList.add('flipped');
+  if(!firstCard){
+    firstCard=this
+    return
+  }
+  secondCard = this
+  lockBoard = true;
+  moves++;
+  movesElement.textContent = moves;
+  checkMatch();
+}
+
 function initGame() {
   clearInterval(timer);
   board.innerHTML = '';
@@ -83,3 +98,8 @@ function initGame() {
 
   startTimer();
 }
+
+restartBtn.addEventListener('click', initGame);
+difficultySelect.addEventListener('change', initGame);
+
+initGame();
