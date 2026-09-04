@@ -82,3 +82,37 @@ h1{
   cursor: pointer;
   transition: background-color 0.2s, transform 0.2s;
 }
+
+#restart-btn:hover {
+  background-color: #e05e00;
+  transform: scale(1.03);
+}
+
+.memory-board{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap:12px;
+    width: 100%;
+}
+.card{
+    height: 100px;
+    background-color: #262626;
+    border: 2px solid #404040;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+}
+.card:hover{
+    border-color: #ff6b00;
+    transform: translate(-2px);
+}
+.card img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
