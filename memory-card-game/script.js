@@ -45,17 +45,22 @@ function startTimer() {
 }
 
 function flipCard() {
-  if(lockBoard) return;
-  if(this===firstCard) return;
+  if (lockBoard) return;
+  if (this === firstCard) return;
+
   this.classList.add('flipped');
-  if(!firstCard){
-    firstCard=this
-    return
+
+  if (!firstCard) {
+    firstCard = this;
+    return;
   }
-  secondCard = this
+
+  secondCard = this;
   lockBoard = true;
+
   moves++;
   movesElement.textContent = moves;
+
   checkMatch();
 }
 
@@ -97,6 +102,54 @@ function initGame() {
   });
 
   startTimer();
+}
+
+function checkMatch() {
+  const isMatch = firstCard.dataset.image === secondCard.dataset.image;
+
+  if (isMatch) {
+    firstCard.classList.add('matched');
+    secondCard.classList.add('matched');
+
+    firstCard.removeEventListener('click', flipCard);
+    secondCard.removeEventListener('click', flipCard);
+
+    pairsFound++;
+
+    const difficulty = difficultySelect.value;
+
+    if (difficulty === 'facile' || difficulty === '6') {
+      score += 90;
+    } else if (difficulty === 'moyen' || difficulty === '8') {
+      score += 120;
+    } else {
+      score += 150;
+    }
+
+    pairsElement.textContent = pairsFound;
+    scoreElement.textContent = score;
+
+    resetBoard();
+
+    const totalPairs = parseInt(difficultySelect.value);
+    if (pairsFound === totalPairs) {
+      clearInterval(timer);
+      finalScoreElement.textContent = score;
+      winMessage.classList.remove('hidden');
+    }
+  } else {
+    setTimeout(() => {
+      firstCard.classList.remove('flipped');
+      secondCard.classList.remove('flipped');
+      resetBoard();
+    }, 1000);
+  }
+}
+
+function resetBoard() {
+  firstCard = null;
+  secondCard = null;
+  lockBoard = false;
 }
 
 restartBtn.addEventListener('click', initGame);
