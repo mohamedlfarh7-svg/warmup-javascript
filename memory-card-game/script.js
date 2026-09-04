@@ -43,3 +43,63 @@ function startTimer() {
     timerElement.textContent = `${mins}:${secs}`;
   }, 1000);
 }
+
+function flipCard() {
+  if(lockBoard) return;
+  if(this===firstCard) return;
+  this.classList.add('flipped');
+  if(!firstCard){
+    firstCard=this
+    return
+  }
+  secondCard = this
+  lockBoard = true;
+  moves++;
+  movesElement.textContent = moves;
+  checkMatch();
+}
+
+function initGame() {
+  clearInterval(timer);
+  board.innerHTML = '';
+  winMessage.classList.add('hidden');
+
+  moves = 0;
+  pairsFound = 0;
+  score = 0;
+  firstCard = null;
+  secondCard = null;
+  lockBoard = false;
+
+  movesElement.textContent = moves;
+  pairsElement.textContent = pairsFound;
+  scoreElement.textContent = score;
+
+  const totalPairs = parseInt(difficultySelect.value);
+  totalPairsElement.textContent = totalPairs;
+
+  const selectedImages = images.slice(0, totalPairs);
+  const deck = [...selectedImages, ...selectedImages];
+  deck.sort(() => Math.random() - 0.5);
+
+  deck.forEach((src, index) => {
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.dataset.image = src;
+
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = `Carte ${index + 1}`;
+
+    card.appendChild(img);
+    card.addEventListener('click', flipCard);
+    board.appendChild(card);
+  });
+
+  startTimer();
+}
+
+restartBtn.addEventListener('click', initGame);
+difficultySelect.addEventListener('change', initGame);
+
+initGame();
