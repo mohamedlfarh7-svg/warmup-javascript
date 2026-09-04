@@ -116,3 +116,42 @@ h1{
     object-fit: cover;
     display: none;
 }
+.card.flipped{
+    background-color: #ffffff;
+    border-color: #ff6b00;
+}
+.card.flipped img{
+    display: block;
+}
+.card.matched{
+    background-color: #0d0d0d;
+    border-color: #ff6b00;
+    cursor: default;
+    opacity: 0.7;
+    transform: none;
+}
+.card.matched img {
+    display: block;
+}
+#win-message{
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ff6b00;
+    background-color: #26180d;
+    border: 1px solid #ff6b00;
+    padding: 12px 20px ;
+    border-radius: 8px;
+    text-align: center;
+}
+.hidden{
+    display: none;
+}
+
+@media(max-width:500px){
+    .memory-board{
+        grid-template-columns: repeat(3,1fr);
+    }
+    .card{
+        height: 85px;
+    }
+}
