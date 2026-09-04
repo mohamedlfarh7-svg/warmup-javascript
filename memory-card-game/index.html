@@ -11,17 +11,30 @@
   <div class="game-container">
     <header>
       <h1>Memory Game</h1>
-      <div class="stats">
-        <p>Coups : <span id="moves-count">0</span></p>
-        <p>Paires : <span id="pairs-count">0</span>/6</p>
+      
+      <div class="controls">
+        <label for="difficulty-select">Difficulté :</label>
+        <select id="difficulty-select">
+          <option value="6">Facile (6 paires)</option>
+          <option value="8" selected>Moyen (8 paires)</option>
+          <option value="10">Difficile (10 paires)</option>
+        </select>
       </div>
+
+      <div class="stats">
+        <p>Temps : <span id="timer">00:00</span></p>
+        <p>Coups : <span id="moves-count">0</span></p>
+        <p>Paires : <span id="pairs-count">0</span>/<span id="total-pairs">8</span></p>
+        <p>Score : <span id="score-count">0</span></p>
+      </div>
+
       <button id="restart-btn">Recommencer</button>
     </header>
 
     <main id="game-board" class="memory-board"></main>
 
     <div id="win-message" class="hidden">
-        Félicitations ! Vous avez gagné !
+         Félicitations ! Vous avez gagné avec un score de <span id="final-score">0</span> !
     </div>
   </div>
 
