@@ -20,7 +20,7 @@ function validerInscription(donnees) {
         erreurs.push("Le mot de passe doit contenir au moins 8 caracteres.");
     }
 
-    if (typeof donnees.age !== "number" || donnees.age < 18) {
+    if (typeof donnees.age != "number" || donnees.age < 18) {
         erreurs.push("Vous devez avoir au moins 18 ans.");
     }
 
